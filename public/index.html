@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="style.css"> <!-- Optional: for basic styling -->
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        button { margin: 5px 0; padding: 8px; cursor: pointer; }
+        input { margin-bottom: 10px; padding: 8px; width: calc(100% - 18px); }
+        hr { margin: 20px 0; }
+        .error { color: red; }
+        .success { color: green; }
+        #authSection, #userDataSection, #registrationFormArea, #updateUserFormArea { margin-bottom: 20px; padding:10px; border:1px solid #eee; }
+    </style>
+</head>
+<body>
+    <h1>User Management System</h1>
+
+    <div id="messageArea" class="message"></div>
+
+    <!-- Authentication Section -->
+    <div id="authSection">
+        <div id="loginFormArea">
+            <h3>Login</h3>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required><br>
+                <input type="password" id="loginPassword" placeholder="Password" required><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <hr>
+        <div id="registrationFormArea">
+            <h3>Register</h3>
+            <form id="registrationForm">
+                <input type="text" id="regUsuario" placeholder="Username" required><br>
+                <input type="email" id="regEmail" placeholder="Email" required><br>
+                <input type="password" id="regPassword" placeholder="Password" required><br>
+                <input type="text" id="regNombres" placeholder="First Name" required><br>
+                <input type="text" id="regApellidos" placeholder="Last Name" required><br>
+                <input type="number" id="regTipoUsuario" placeholder="User Type ID (e.g., 1 or 2)" required><br>
+                <input type="text" id="regRut" placeholder="RUT (Optional)"><br>
+                <input type="text" id="regTelefono" placeholder="Phone (Optional)"><br>
+                <input type="text" id="regRazonSocial" placeholder="Razon Social (Optional)"><br>
+                <input type="text" id="regGiro" placeholder="Giro (Optional)"><br>
+                <input type="text" id="regNombreFantasia" placeholder="Nombre Fantasia (Optional)"><br>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- User Data Section (Protected - Shown after login) -->
+    <div id="userDataSection" style="display:none;">
+        <h2>Welcome, <span id="loggedInUserEmail">User</span>! <button id="logoutButton">Logout</button></h2>
+        
+        <h3>User List</h3>
+        <button id="refreshUsersButton">Refresh User List</button>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Type ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userListBody">
+                <!-- User rows will be populated here -->
+            </tbody>
+        </table>
+        
+        <hr>
+
+        <div id="updateUserFormArea" style="display:none;">
+            <h3>Update User</h3>
+            <form id="updateUserForm">
+                <input type="hidden" id="updateUserId">
+                <label for="updateUsuario">Username:</label>
+                <input type="text" id="updateUsuario" placeholder="Username"><br>
+                <label for="updateEmail">Email:</label>
+                <input type="email" id="updateEmail" placeholder="Email"><br>
+                <label for="updateNombres">First Name:</label>
+                <input type="text" id="updateNombres" placeholder="First Name"><br>
+                <label for="updateApellidos">Last Name:</label>
+                <input type="text" id="updateApellidos" placeholder="Last Name"><br>
+                <label for="updateTipoUsuario">User Type ID:</label>
+                <input type="number" id="updateTipoUsuario" placeholder="User Type ID"><br>
+                <label for="updateRut">RUT:</label>
+                <input type="text" id="updateRut" placeholder="RUT (Optional)"><br>
+                <label for="updateTelefono">Phone:</label>
+                <input type="text" id="updateTelefono" placeholder="Phone (Optional)"><br>
+                <button type="submit">Save Updates</button>
+                <button type="button" id="cancelUpdateButton">Cancel Update</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
